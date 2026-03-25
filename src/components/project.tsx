@@ -7,10 +7,16 @@ import Project from "../../public/assets/project.png";
 import Resturant from "../../public/assets/Resturant.png";
 import Link from "next/link";
 
-const filters = ["All", "UI UX", "Website Design", "App Design", "Graphic Design"];
-
+const filters = [
+  "All",
+  "UI UX",
+  "Website Design",
+  "App Design",
+  "Graphic Design",
+];
 export default function Projects() {
   const [active, setActive] = useState("All");
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py- scroll-mt-24 px-2">
@@ -49,8 +55,11 @@ export default function Projects() {
           {/* Project 1 */}
           {(active === "All" || active === "UI UX") && (
             <div className="space-y-3">
-              <div className="relative group rounded-xl overflow-hidden border border-[#00ff88]/30 hover:shadow-[0_0_25px_rgba(0,255,136,0.35)] transition duration-300">
-
+              <div
+                onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
+                className="relative group rounded-xl overflow-hidden border border-[#00ff88]/30 
+    hover:shadow-[0_0_25px_rgba(0,255,136,0.35)] transition duration-300 cursor-pointer"
+              >
                 <Image
                   src={Resturant}
                   alt="AirCalling Landing Page Design"
@@ -60,23 +69,32 @@ export default function Projects() {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-4">
-
-                  <Link
-                    href="/projects/resturant"
-                    className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition"
+                <div
+                  className={`
+        absolute inset-0 bg-black/70 flex items-center justify-center transition duration-300 backdrop-blur-xs
+        
+        ${activeCard === 1 ? "opacity-100" : "opacity-0"}
+        md:opacity-0 md:group-hover:opacity-100`}
+                >
+                  {/* Buttons */}
+                  <div
+                    className="flex flex-col md:flex-row gap-3"
                   >
-                    Project Details
-                  </Link>
+                    <Link
+                      href="/projects/resturant"
+                      className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition text-center"
+                    >
+                      Project Details
+                    </Link>
 
-                  <Link
-                    href="https://giaic-hackathon-three.vercel.app/"
-                    target="_blank"
-                    className="px-4 py-2 border border-[#00ff88] text-[#00ff88] rounded-lg hover:bg-[#00ff88] hover:text-black transition"
-                  >
-                    Live Preview
-                  </Link>
-
+                    <Link
+                      href="https://giaic-hackathon-three.vercel.app/"
+                      target="_blank"
+                      className="px-4 py-2 border border-[#00ff88] text-[#00ff88] rounded-lg hover:bg-[#00ff88] hover:text-black transition text-center"
+                    >
+                      Live Preview
+                    </Link>
+                  </div>
                 </div>
               </div>
 
@@ -97,7 +115,9 @@ export default function Projects() {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <p className="text-sm text-[#00ff88] font-medium">Website Design</p>
+              <p className="text-sm text-[#00ff88] font-medium">
+                Website Design
+              </p>
               <h3 className="font-semibold">Portfolio Website Design</h3>
             </div>
           )}
@@ -131,7 +151,9 @@ export default function Projects() {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <p className="text-sm text-[#00ff88] font-medium">Graphic Design</p>
+              <p className="text-sm text-[#00ff88] font-medium">
+                Graphic Design
+              </p>
               <h3 className="font-semibold">Branding & Illustration</h3>
             </div>
           )}

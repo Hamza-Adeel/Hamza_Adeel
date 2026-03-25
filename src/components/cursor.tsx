@@ -6,12 +6,16 @@ export default function Cursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Detect desktop (mouse devices)
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setIsDesktop(mediaQuery.matches);
+
     const moveCursor = (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      // If cursor is outside viewport → hide
       if (
         clientX <= 0 ||
         clientY <= 0 ||
@@ -30,23 +34,28 @@ export default function Cursor() {
       if (document.hidden) setVisible(false);
     };
 
-    // Hover detection
-    const hoverElements = document.querySelectorAll("a, button");
+    if (mediaQuery.matches) {
+      // Hover detection only for desktop
+      const hoverElements = document.querySelectorAll("a, button");
 
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => setHovering(true));
-      el.addEventListener("mouseleave", () => setHovering(false));
-    });
+      hoverElements.forEach((el) => {
+        el.addEventListener("mouseenter", () => setHovering(true));
+        el.addEventListener("mouseleave", () => setHovering(false));
+      });
 
-    window.addEventListener("mousemove", moveCursor);
-    document.addEventListener("visibilitychange", handleVisibility);
-    window.addEventListener("blur", () => setVisible(false));
+      window.addEventListener("mousemove", moveCursor);
+      document.addEventListener("visibilitychange", handleVisibility);
+      window.addEventListener("blur", () => setVisible(false));
+    }
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
+
+  // ❌ Do not render on mobile
+  if (!isDesktop) return null;
 
   return (
     <>
