@@ -1,7 +1,7 @@
 "use client";
 
-import Profile from "../../public/assets/Profile.png";
-import "react-circular-progressbar/dist/styles.css";
+import Profile from "../../public/assets/image-1.png";
+// import "react-circular-progressbar/dist/styles.css";
 import Image from "next/image";
 
 export default function About() {
@@ -16,7 +16,7 @@ export default function About() {
             alt="Profile"
             className="w-52 sm:w-64 md:w-[400px] h-auto rounded-xl border-2 border-green-500 shadow-lg shadow-green-900/50 group-hover:scale-105 transition-transform duration-300"
           />
-          <div className="absolute inset-0 rounded-xl bg-green-500/10 blur-xl group-hover:opacity-60 transition-opacity"></div>
+          <div className="absolute inset-0 rounded-xl bg-green-900/10 blur-xl group-hover:opacity-60 transition-opacity"></div>
         </div>
 
         {/* Text Section */}

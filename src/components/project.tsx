@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Project from "../../public/assets/project.png";
 import Resturant from "../../public/assets/Resturant.png";
+import Textbook from "../../public/assets/Humanoid-Textbook.png";
 import Link from "next/link";
 
 const filters = [
@@ -77,9 +78,7 @@ export default function Projects() {
         md:opacity-0 md:group-hover:opacity-100`}
                 >
                   {/* Buttons */}
-                  <div
-                    className="flex flex-col md:flex-row gap-3"
-                  >
+                  <div className="flex flex-col md:flex-row gap-3">
                     <Link
                       href="/projects/resturant"
                       className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition text-center"
@@ -104,21 +103,51 @@ export default function Projects() {
           )}
 
           {/* Project 2 */}
-          {(active === "All" || active === "Website Design") && (
+          {(active === "All" || active === "UI UX") && (
             <div className="space-y-3">
-              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-[0_0_18px_rgba(0,255,136,0.18)] transition">
+              <div
+                onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
+                className="relative group rounded-xl overflow-hidden border border-[#00ff88]/30 
+    hover:shadow-[0_0_25px_rgba(0,255,136,0.35)] transition duration-300 cursor-pointer"
+              >
                 <Image
-                  src={Project}
-                  alt="Portfolio Website Design"
+                  src={Textbook}
+                  alt="AirCalling Landing Page Design"
                   width={500}
                   height={300}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover transition duration-500 group-hover:scale-110"
                 />
+
+                {/* Overlay */}
+                <div
+                  className={`
+        absolute inset-0 bg-black/70 flex items-center justify-center transition duration-300 backdrop-blur-xs
+        
+        ${activeCard === 1 ? "opacity-100" : "opacity-0"}
+        md:opacity-0 md:group-hover:opacity-100`}
+                >
+                  {/* Buttons */}
+                  <div className="flex flex-col md:flex-row gap-3">
+                    <Link
+                      href="/projects/textbook"
+                      className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition text-center"
+                    >
+                      Project Details
+                    </Link>
+
+                    <Link
+                      href="https://giaic-hackathon-three.vercel.app/"
+                      target="_blank"
+                      className="px-4 py-2 border border-[#00ff88] text-[#00ff88] rounded-lg hover:bg-[#00ff88] hover:text-black transition text-center"
+                    >
+                      Live Preview
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-[#00ff88] font-medium">
-                Website Design
-              </p>
-              <h3 className="font-semibold">Portfolio Website Design</h3>
+
+              <p className="text-sm text-[#00ff88] font-medium">UI UX</p>
+              <h3 className="font-semibold">AirCalling Landing Page Design</h3>
             </div>
           )}
 

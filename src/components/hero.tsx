@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
-import Profile from "../../public/assets/Profile.png";
+import Profile from "../../public/assets/image-1.png";
 import Shadow from "../../public/assets/shadow.png";
 import Link from "next/link";
 
@@ -63,7 +63,7 @@ export default function HeroSection() {
         <Image
           src={Profile}
           alt="Profile"
-          className="w-52 sm:w-64 md:w-[350px] h-auto drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]"
+          className="w-52 sm:w-64 md:w-[350px] h-auto drop-shadow-[0_0_20px_rgba(81,68,75)]"
         />
 
         {/* Social Icons */}

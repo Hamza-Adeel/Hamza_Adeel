@@ -1,7 +1,7 @@
 "use client";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+// import "react-circular-progressbar/dist/styles.css";
 import Image from "next/image";
 
 const skills = [
