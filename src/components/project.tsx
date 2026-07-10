@@ -1,0 +1,197 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Project from "../../public/assets/project.png";
+import Resturant from "../../public/assets/Resturant.png";
+import Textbook from "../../public/assets/Humanoid-Textbook.png";
+import Link from "next/link";
+import ScrollReveal from "@/components/ui/scroll-reveal";
+
+const filters = [
+  "All",
+  "UI UX",
+  "Website Design",
+  "App Design",
+  "Graphic Design",
+];
+
+export default function Projects() {
+  const [active, setActive] = useState("All");
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
+  return (
+    <section id="projects" className="py-2 scroll-mt-32 px-2">
+      <div className="bg-gradient-to-b from-[#000000] to-[#2E2D2D] border-2 border-green-500 rounded-3xl md:rounded-4xl text-gray-300 py-16 px-6 sm:px-8 md:px-12 shadow-lg mt-2">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <ScrollReveal direction="down" delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#00ff88]">
+              My Projects
+            </h2>
+            <p className="mt-3 text-gray-400 max-w-2xl mx-auto">
+              A curated collection of my recent work in web development, agentic AI systems, and interactive UI/UX designs.
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Filters */}
+        <div className="flex justify-center gap-3 flex-wrap mb-12">
+          {filters.map((filter, index) => (
+            <ScrollReveal key={filter} direction="up" delay={0.05 * index} className="inline-block">
+              <Button
+                variant={active === filter ? "orange" : "outline"}
+                className={`${
+                  active === filter
+                    ? "bg-[#00ff88] text-black hover:bg-[#00cc6a]"
+                    : "border-[#00ff88] hover:text-white text-green-700 hover:bg-[#00ff88]/10"
+                }`}
+                onClick={() => setActive(filter)}
+              >
+                {filter}
+              </Button>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {/* Project 1 */}
+          {(active === "All" || active === "UI UX") && (
+            <ScrollReveal direction="up" delay={0.1} className="space-y-3">
+              <div
+                onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
+                className="relative group rounded-xl overflow-hidden border border-[#00ff88]/30 
+    hover:shadow-[0_0_25px_rgba(0,255,136,0.35)] transition duration-300 cursor-pointer"
+              >
+                <Image
+                  src={Resturant}
+                  alt="Foodtuck Restaurant Landing Page"
+                  width={500}
+                  height={300}
+                  className="w-full h-auto object-cover transition duration-500 group-hover:scale-110"
+                />
+
+                {/* Overlay */}
+                <div
+                  className={`
+        absolute inset-0 bg-black/70 flex items-center justify-center transition duration-300 backdrop-blur-xs
+        
+        ${activeCard === 1 ? "opacity-100" : "opacity-0"}
+        md:opacity-0 md:group-hover:opacity-100`}
+                >
+                  {/* Buttons */}
+                  <div className="flex flex-col md:flex-row gap-3">
+                    <Link
+                      href="/projects/resturant"
+                      className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition text-center"
+                    >
+                      Project Details
+                    </Link>
+
+                    <Link
+                      href="https://giaic-hackathon-three.vercel.app/"
+                      target="_blank"
+                      className="px-4 py-2 border border-[#00ff88] text-[#00ff88] rounded-lg hover:bg-[#00ff88] hover:text-black transition text-center"
+                    >
+                      Live Preview
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-sm text-[#00ff88] font-medium">UI UX</p>
+              <h3 className="font-semibold">Foodtuck Restaurant Landing Page</h3>
+            </ScrollReveal>
+          )}
+
+          {/* Project 2 */}
+          {(active === "All" || active === "Website Design") && (
+            <ScrollReveal direction="up" delay={0.2} className="space-y-3">
+              <div
+                onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
+                className="relative group rounded-xl overflow-hidden border border-[#00ff88]/30 
+    hover:shadow-[0_0_25px_rgba(0,255,136,0.35)] transition duration-300 cursor-pointer"
+              >
+                <Image
+                  src={Textbook}
+                  alt="Physical AI & Humanoid Robotics Textbook"
+                  width={500}
+                  height={300}
+                  className="w-full h-auto object-cover transition duration-500 group-hover:scale-110"
+                />
+
+                {/* Overlay */}
+                <div
+                  className={`
+        absolute inset-0 bg-black/70 flex items-center justify-center transition duration-300 backdrop-blur-xs
+        
+        ${activeCard === 2 ? "opacity-100" : "opacity-0"}
+        md:opacity-0 md:group-hover:opacity-100`}
+                >
+                  {/* Buttons */}
+                  <div className="flex flex-col md:flex-row gap-3">
+                    <Link
+                      href="/projects/textbook"
+                      className="px-4 py-2 bg-[#00ff88] text-black font-medium rounded-lg hover:bg-[#00cc6a] transition text-center"
+                    >
+                      Project Details
+                    </Link>
+
+                    <Link
+                      href="https://hackathon-i-textbook-for-physical-a.vercel.app/"
+                      target="_blank"
+                      className="px-4 py-2 border border-[#00ff88] text-[#00ff88] rounded-lg hover:bg-[#00ff88] hover:text-black transition text-center"
+                    >
+                      Live Preview
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-sm text-[#00ff88] font-medium">Website Design</p>
+              <h3 className="font-semibold">Physical AI & Humanoid Robotics Textbook</h3>
+            </ScrollReveal>
+          )}
+
+          {/* Project 3 */}
+          {(active === "All" || active === "App Design") && (
+            <ScrollReveal direction="up" delay={0.3} className="space-y-3">
+              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-[0_0_18px_rgba(0,255,136,0.18)] hover:-translate-y-1 transition duration-300">
+                <Image
+                  src={Project}
+                  alt="Mobile App Dashboard"
+                  width={500}
+                  height={300}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <p className="text-sm text-[#00ff88] font-medium">App Design</p>
+              <h3 className="font-semibold">Mobile App Dashboard</h3>
+            </ScrollReveal>
+          )}
+
+          {/* Project 4 */}
+          {(active === "All" || active === "Graphic Design") && (
+            <ScrollReveal direction="up" delay={0.4} className="space-y-3">
+              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-[0_0_18px_rgba(0,255,136,0.18)] hover:-translate-y-1 transition duration-300">
+                <Image
+                  src={Project}
+                  alt="Branding & Illustration"
+                  width={500}
+                  height={300}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <p className="text-sm text-[#00ff88] font-medium">
+                Graphic Design
+              </p>
+              <h3 className="font-semibold">Branding & Illustration</h3>
+            </ScrollReveal>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
