@@ -22,7 +22,7 @@ export default function Projects() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="py-2 scroll-mt-32 px-2">
+    <section id="projects" className=" scroll-mt-32 px-2">
       <div className="bg-gradient-to-b from-[#000000] to-[#2E2D2D] border-2 border-green-500 rounded-3xl md:rounded-4xl text-gray-300 py-16 px-6 sm:px-8 md:px-12 shadow-lg mt-2">
         {/* Heading */}
         <div className="text-center mb-12">

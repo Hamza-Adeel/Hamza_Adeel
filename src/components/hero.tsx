@@ -11,7 +11,7 @@ import ScrollReveal from "@/components/ui/scroll-reveal";
 export default function HeroSection() {
   return (
     <div className="px-2">
-      <section className="relative bg-gradient-to-b from-[#000000] to-[#2E2D2D] border-2 mt-25 rounded-3xl md:rounded-4xl border-green-500 text-gray-200 px-6 sm:px-8 md:px-16 lg:px-30 py-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#000000] to-[#2E2D2D] border-2 mt-23 rounded-3xl md:rounded-4xl border-green-500 text-gray-200 px-6 sm:px-8 md:px-16 lg:px-30 py-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
         {/* Left Side Content */}
         <ScrollReveal direction="left" delay={0.1} className="relative max-w-xl space-y-5 text-center md:text-left z-10">
           {/* Green glowing shadow background */}
